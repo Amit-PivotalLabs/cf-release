@@ -94,6 +94,9 @@ properties:
   router.logging_level:
     description: "Log level for router"
     default: "info"
+  router.max_connections:
+    description: "Kernel limit for maximum incoming connections"
+    default: 1024
 
   nats.user:
     description:
