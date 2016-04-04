@@ -46,9 +46,9 @@ case $1 in
         echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
     fi
 
-    <% if_p("router.max_connections") do |max_connections| %>
+    <% if p("router.max_connections") %>
     # Allow a few more queued connections than are allowed by default
-    echo <%= max_connections %> > /proc/sys/net/core/somaxconn
+    echo <%= p("router.max_connections") %> > /proc/sys/net/core/somaxconn
     <% end %>
 
     # Allowed number of open file descriptors
