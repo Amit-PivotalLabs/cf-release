@@ -46,7 +46,7 @@ case $1 in
         echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
     fi
 
-    <% if p("router.max_connections") %>
+    <% if p("router.max_connections") != -1 %>
     # Allow a few more queued connections than are allowed by default
     echo <%= p("router.max_connections") %> > /proc/sys/net/core/somaxconn
     <% end %>
