@@ -48,7 +48,13 @@ case $1 in
 
     <% if p("router.max_connections") != -1 %>
     # Allow a few more queued connections than are allowed by default
-    echo <%= p("router.max_connections") %> > /proc/sys/net/core/somaxconn
+    MAX_CONNECTIONS=<%= p("router.max_connections") %>
+    if [ "$MAX_CONNECTIONS" -ge 0 -a "$MAX_CONNECTIONS" -le 65535 ]; then
+      echo $MAX_CONNECTIONS > /proc/sys/net/core/somaxconn
+    else
+      echo "MAX_CONNECTIONS should be between 0 and 65535."
+      exit 1
+    fi
     <% end %>
 
     # Allowed number of open file descriptors

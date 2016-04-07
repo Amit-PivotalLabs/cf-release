@@ -95,7 +95,7 @@ properties:
     description: "Log level for router"
     default: "info"
   router.max_connections:
-    description: "Kernel limit for maximum incoming connections. Set to -1 to use the kernel's default value."
+    description: "Kernel limit for maximum incoming connections (0-65535). Set to -1 to use the kernel's default value."
     default: 1024
 
   nats.user:
